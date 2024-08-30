@@ -27,7 +27,7 @@ This project is an E-commerce website built using the Django framework. It offer
 
 ### Steps:
 1. Clone the repository:  
-   `git clone https://github.com/yourusername/ecommerce-django.git`
+   `git clone [https://github.com/Debolina-Chatterjee/Ecommerce_Omnicart.git`]
 2. Navigate to the project directory:  
    `cd ecommerce-django`
 3. Install the required packages:  
