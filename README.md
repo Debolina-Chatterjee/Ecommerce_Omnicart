@@ -57,3 +57,8 @@ This project is an E-commerce website built using the Django framework. It offer
 - Django documentation
 - Open-source Django packages
 
+## Contributors 
+
+-Debolina Chatterjee
+-Aman Singh
+-Devika S Vinod
