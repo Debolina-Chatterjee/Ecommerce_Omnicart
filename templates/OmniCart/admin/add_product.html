@@ -1,0 +1,69 @@
+<!-- OmniCart/admin_panel.html -->
+{% extends 'OmniCart/admin_panel_layout.html' %}
+
+{% block title %}Manufacturer Admin Panel{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <h2 class="mb-4">Add Product</h2>
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+          {{ error_message }}
+        </div>
+      {% endif %}
+        <form method="post" id="addProductForm" enctype="multipart/form-data">
+          {% csrf_token %}
+          
+          <div class="mb-3">
+            <label for="id_product_name" class="form-label">Product Name:</label>
+            {{ form.product_name }}
+          </div>
+          
+          <div class="mb-3">
+            <label for="id_quantity" class="form-label">Quantity:</label>
+            {{ form.quantity }}
+          </div>
+          
+          <div class="mb-3">
+            <label for="id_product_image" class="form-label">Product Image:</label>
+            {{ form.product_image }}
+          </div>
+
+          <div class="mb-3">
+            <label for="id_categories" class="form-label">Categories:</label>
+            {{ form.categories }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="id_tags" class="form-label">Tags:</label>
+            {{ form.tags }}
+        </div>
+          
+          <div class="mb-3">
+            <label for="id_unit_weight" class="form-label">Unit Weight:</label>
+            {{ form.unit_weight }}
+          </div>
+          
+          <div class="mb-3">
+            <label for="id_product_description" class="form-label">Product Description:</label>
+            {{ form.product_description }}
+          </div>
+          <div class="mb-3">
+            <label for="id_product_short_description" class="form-label">Product Short Description:</label>
+            {{ form.product_short_description }}
+          </div>
+          
+          <div class="mb-3">
+            <label for="id_unit_price" class="form-label">Unit Price:</label>
+            {{ form.unit_price }}
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Add Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

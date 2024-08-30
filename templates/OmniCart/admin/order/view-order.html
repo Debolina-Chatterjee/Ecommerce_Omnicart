@@ -1,0 +1,47 @@
+{% extends 'OmniCart/admin_panel_layout.html' %}
+
+{% block title %}Order List{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="mt-4 mb-4">Order List</h2>
+
+    {% if orders %}
+      <table id="myTable" class="table display">
+        <thead>
+          <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+            <tr>
+              <td>{{ order.id }}</td>
+              <td>₹{{ order.total_price }}</td>
+              <td>
+                <form method="post" action="{% url 'update_order_status' order_id=order.id %}">
+                  {% csrf_token %}
+                  <select name="status" onchange="this.form.submit()">
+                    {% for choice in order.STATUS_CHOICES %}
+                      <option value="{{ choice.0 }}" {% if choice.0 == order.status %}selected{% endif %}>{{ choice.1 }}</option>
+                    {% endfor %}
+                  </select>
+                </form>
+              </td>
+              <td>{{ order.order_date }}</td>
+              <td>
+                <a href="{% url 'order_detail' order_id=order.id %}">View Details</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No orders available.</p>
+    {% endif %}
+  </div>
+{% endblock %}

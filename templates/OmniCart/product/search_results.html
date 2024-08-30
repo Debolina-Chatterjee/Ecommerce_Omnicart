@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% block head_title %}Search Results{% endblock %}
+
+{% block content %}
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Search Results</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="{% url 'index' %}">Home</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Search</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Search Results Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-3 col-md-12">
+            <!-- Price Start -->
+            <div class="border-bottom mb-4 pb-4">
+                <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
+                <form>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" checked id="price-all">
+                        <label class="custom-control-label" for="price-all">All Price</label>
+                        <span class="badge border font-weight-normal">1000</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-1">
+                        <label class="custom-control-label" for="price-1">$0 - $100</label>
+                        <span class="badge border font-weight-normal">150</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-2">
+                        <label class="custom-control-label" for="price-2">$100 - $200</label>
+                        <span class="badge border font-weight-normal">295</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-3">
+                        <label class="custom-control-label" for="price-3">$200 - $300</label>
+                        <span class="badge border font-weight-normal">246</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-4">
+                        <label class="custom-control-label" for="price-4">$300 - $400</label>
+                        <span class="badge border font-weight-normal">145</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="checkbox" class="custom-control-input" id="price-5">
+                        <label class="custom-control-label" for="price-5">$400 - $500</label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                </form>
+            </div>
+            </div>
+        <div class="col-lg-9 col-md-12">
+           <p class="mb-1"> <strong>Total products found: {{ products.count }}</strong></p>
+            <div class="row pb-3">
+                <!-- Display Search Results for Searched Products -->
+                {% if products %}
+                <div class="col-12">
+                    
+                    <div class="row">
+                        {% for product in products %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <!-- Product Card Content -->
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="{{ product.product_image.url }}" style="height: 300px;" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">{{ product.product_name }}</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>₹{{ product.unit_price }}</h6><h6 class="text-muted ml-2"></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="{% url 'product_detail' product_id=product.product_id %}" class="btnss btn-sm text-dark p-0"><i class="fas fa-eye mr-1" style="color: #F7941D;"></i>View Detail</a>
+                                    <a href="{% url 'add_to_cart' product_id=product.product_id %}" class="btnss btn-sm text-dark p-0"><i class="fas fa-shopping-cart mr-1" style="color: #F7941D;"></i>Add To Cart</a>
+                                </div>
+                                <!-- End of Product Card Content -->
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Display Search Results for Products Related to Categories -->
+                {% if category_products %}
+                <div class="col-12">
+                    <h4>Products related to Categories:</h4>
+                    <div class="row">
+                        {% for product in category_products %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <!-- Product Card Content -->
+                                <!-- Product Card Content -->
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="{{ product.product_image.url }}" style="height: 300px;" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">{{ product.product_name }}</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>₹{{ product.unit_price }}</h6><h6 class="text-muted ml-2"><del>₹{{ product.unit_price }}</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="{% url 'product_detail' product_id=product.product_id %}" class="btnss btn-sm text-dark p-0"><i class="fas fa-eye mr-1" style="color: #F7941D;"></i>View Detail</a>
+                                    <a href="{% url 'add_to_cart' product_id=product.product_id %}" class="btnss btn-sm text-dark p-0"><i class="fas fa-shopping-cart mr-1" style="color: #F7941D;"></i>Add To Cart</a>
+                                </div>
+                                <!-- End of Product Card Content -->
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Display Search Results for Products Related to Tags -->
+                {% if tag_products %}
+                <div class="col-12">
+                    <h4>Products related to Tags:</h4>
+                    <div class="row">
+                        {% for product in tag_products %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                               <!-- Product Card Content -->
+                               <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="{{ product.product_image.url }}" style="height: 300px;" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">{{ product.product_name }}</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>₹{{ product.unit_price }}</h6><h6 class="text-muted ml-2"><del>₹{{ product.unit_price }}</del></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="{% url 'product_detail' product_id=product.product_id %}" class="btnss btn-sm text-dark p-0"><i class="fas fa-eye mr-1" style="color: #F7941D;"></i>View Detail</a>
+                                <a href="{% url 'add_to_cart' product_id=product.product_id %}" class="btnss btn-sm text-dark p-0"><i class="fas fa-shopping-cart mr-1" style="color: #F7941D;"></i>Add To Cart</a>
+                            </div>
+                            <!-- End of Product Card Content -->
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Display No Results Found if No Products Found -->
+                {% if not products and not category_products and not tag_products %}
+                <div class="col-12">
+                    <p>No products found.</p>
+                </div>
+                {% endif %}
+
+                <!-- Pagination -->
+                <div class="col-12 pb-1">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center mb-3">
+                            <!-- Pagination links go here -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search Results End -->
+{% endblock content %}

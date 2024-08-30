@@ -1,0 +1,48 @@
+{% extends 'OmniCart/admin_panel_layout.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+  <div class="container" >
+    <h2 class="mt-4 mb-4">Product List</h2>
+
+    {% if products %}
+      <table id="myTable" class="table display">
+        <thead>
+          <tr>
+            <th scope="col">Product Image</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+            <tr>
+              <td><img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" style="max-width: 100px;"></td>
+              <td>{{ product.product_name }}</td>
+              <td>₹{{ product.unit_price }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>
+                <a href="{% url 'product_edit' product_id=product.product_id %}"><i class='bx bx-edit-alt' ></i></a>
+                <!-- this is a delete  -->
+                <a href="" token="{{ csrf_token }}" class="delete-product" data-product-id="{{ product.product_id }}"><i class="bx bx-trash"></i></a>
+                {% if product.disabled %}
+                  <i class="bx bx-x"></i> 
+                {% else %}
+                  <i class="bx bx-check"></i>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No products available.</p>
+    {% endif %}
+  </div>
+
+{% endblock %}
+
+

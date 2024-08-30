@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}OmniCart- Payment Policy{% endblock head_title %}
+
+
+
+{% block content %}
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+:root{
+    --purple:#9259a5;
+    --grey: #818C8C;
+    --blue:#d99f53;
+    --gradient:linear-gradient(90deg, var(--grey), var(--blue));
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border:none;
+    text-transform: capitalize;
+}
+
+*::selection{
+    background:var(--blue);
+    color:#fff;
+    scroll-behavior: smooth;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body{
+    background:#d0d0d0;
+}
+
+section{
+    min-height: 100vh;
+    padding:0 9%;
+    padding-top: 7.5rem;
+    padding-bottom: 2rem;
+}
+
+/**************************************************/
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding:.8rem 3rem;
+    border-radius: 5rem;
+    background:var(--gradient);
+    font-size: 1.7rem;
+    color:#fff;
+    cursor: pointer;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    transition: all .3s linear;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+
+/**************************************************/
+
+.heading{
+    text-align: center;
+    background:var(--gradient);
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    padding:1rem;
+}
+
+
+
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:url("") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .image img{
+    width:40vw;
+    animation: float 3s linear infinite;
+}
+
+@keyframes float{
+    0%, 100%{
+        transform: translateY(0rem);
+    }
+    50%{
+        transform: translateY(-3.5rem);
+    }
+}
+
+.home .content h3{
+    font-size: 5.5rem;
+    color:#333;
+    text-transform: uppercase;
+}
+
+.home .content h3 span{
+    color:var(--blue);
+    text-transform: uppercase;
+}
+
+.home .content p{
+    font-size: 1.7rem;
+    color:#333;
+    padding:1rem 0;
+}
+
+.policies .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.policies .heading{
+    color:var(--blue);
+}
+
+.policies .box-container .box{
+    flex:1 1 30rem;
+    background:#f3f0f0;
+    border-radius: .5rem;
+    border:.1rem solid rgba(0,0,0,.2);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    margin:1.5rem;
+    padding:3rem 2rem;
+    border-radius: .5rem;
+    text-align: center;
+    transition: .2s linear;
+}
+
+.policies .box-container .box img{
+    height: 15rem;
+}
+
+.policies .box-container .box h3{
+    font-size: 2rem;
+    color:#333;
+    padding-top: 1rem;
+}
+
+.policies .box-container .box p{
+    font-size: 1.3rem;
+    color:#666;
+    padding: 1rem 0;
+}
+
+.footer{
+    margin-top: 8.5rem;
+    padding-top: 3rem;
+    /*background:url("untitled.png") no-repeat;*/
+    background-color: #333;
+    background-size: cover;
+    background-position: center;
+}
+
+.footer .box-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer .box-container .box{
+    flex:1 1 25rem;
+    margin:2rem;
+}
+
+.footer  h3{
+    font-size: 2.5rem;
+    padding:1rem 0;
+    color:#fff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+}
+
+.footer  p{
+    font-size: 1.5rem;
+    padding:.5rem 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#eee;
+}
+
+.footer .credit{
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: .1rem;
+    color:#fff;
+    border-top: .1rem solid #fff5;
+    padding:2.5rem 1rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 3s ease;
+}
+
+.reveal.active{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+
+/* media queries  */
+
+@media (max-width:1200px){
+    
+    html{
+        font-size: 55%;
+    }
+
+}
+
+@media (max-width:991px){
+    
+    section{
+        padding:0 3%;
+        padding-top: 7.5rem;
+        padding-bottom: 2rem;
+    }
+
+}
+
+@media (max-width:768px){
+
+    header label{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header .navbar{
+        position: absolute;
+        top:100%; left: 0;
+        width:100%;
+        background:#fff;
+        padding:1rem 2rem;
+        border-top: .1rem solid rgba(0,0,0,.2);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+        transform-origin: top;
+        transform: scaleY(0);
+        opacity: 0;
+        transition: .2s linear;
+    }
+
+    header .navbar a{
+        display: block;
+        margin:2rem 0;
+        font-size: 2rem;
+    }
+
+    header input:checked ~ .navbar{
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    header input:checked ~ label::before{
+        content:'\f00d';
+    }
+
+    .home{
+        flex-flow: column-reverse;
+    }
+
+    .home .image img{
+        width:100%;
+    }
+
+    .home .content h3{
+        font-size: 3.6rem;
+    }
+
+    .home .content p{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width:450px){
+    
+    html{
+        font-size: 50%;
+    }
+
+    .column .content .buttons a{
+        width:100%;
+        text-align: center;
+    }
+
+    .column .content .buttons a:last-child{
+        margin: 1rem 0;
+    }
+
+}
+</style>
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>privacy policy <span>OMNI CART</span></h3>
+            <p>Welcome to the Omni Cart Privacy Page, where we prioritize the protection and confidentiality of your
+                personal information. Our comprehensive privacy policy has been crafted to provide you with a clear
+                understanding of how we collect, use, and safeguard your data throughout your interactions with our
+                platform. At Omni Cart, we are committed to ensuring the security and privacy of every user. Any
+                information you entrust us with is handled with the utmost care and is utilized exclusively to enhance
+                your overall shopping experience. We adhere strictly to privacy regulations, ensuring that your data is
+                maintained securely and used responsibly. We encourage you to explore our detailed privacy policy to
+                gain deeper insights into how we prioritize and safeguard your privacy at Omni Cart. Your trust is
+                foundational to our relationship, and we are dedicated to maintaining the transparency and integrity of
+                our privacy practices. If you have any questions or concerns, please feel free to reach out to our
+                customer support team, and thank you for choosing Omni Cart for your online shopping needs.
+            
+            </p>
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- features section starts  -->
+
+    <section class="policies" id="policies">
+
+        <h1 class="heading"> policies </h1>
+
+        <div class="box-container">
+
+            <div class="box reveal">
+                <img src="{% static 'images/2.jpg' %}" alt="" height="200px">
+                <h3>Information Collection and Use</h3>
+                <p>For a better experience, while using our Service, we may require you to provide us with certain
+                    personally identifiable information, including background location. The information that we request
+                    will be retained by us and used as described in this privacy policy.</p>
+            </div>
+
+            <div class="box reveal">
+                <img src="{% static 'images/3.jpg' %}" alt="" height="200px">
+                <h3>Security</h3>
+                <p>We value your trust in providing us your Personal Information, thus we are striving to use
+                    commercially acceptable means of protecting it. But remember that no method of transmission over the
+                    internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its
+                    absolute security.</p>
+            </div>
+
+            <div class="box reveal">
+                <img src="{% static 'images/4.jpg' %}" alt="" height="200px">
+                <h3>Changes to This Privacy Policy</h3>
+                <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page
+                    periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on
+                    this page. This policy is effective as of 2022-03-09</p>
+            </div>
+
+            <div class="box reveal">
+                <img src="{% static 'images/5.jpg' %}" alt="" height="200px">
+                <h3>Log Data</h3>
+                <p>Our app OBD Charm fetches the location and OBDII data from cars and saves it in an excel file visible
+                    to the user Our App runs 24/7 in the foreground auto connect to OBDII Device and starts fetching
+                    data , given that a user might forget to open the app while he is driving We therefore cannot move
+                    our logic to the activity .In future our app would also tell the users about road traffic conditions
+                    with GPS locations.</p>
+            </div>
+
+            <div class="box reveal">
+                <img src="{% static 'images/6.jpg' %}" alt="" height="200px">
+                <h3>Children’s Privacy</h3>
+                <p>These Services do not address anyone under the age of 13. We do not knowingly collect personally
+                    identifiable information from children under 13 years of age. In the case we discover that a child
+                    under 13 has provided us with personal information, we immediately delete this from our servers. If
+                    you are a parent or guardian and you are aware that your child has provided us with personal
+                    information, please contact us so that we will be able to do the necessary actions.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- features section ends -->
+
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add("active");
+                }
+                else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+    </script>
+
+
+
+
+{% endblock content %}

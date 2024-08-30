@@ -1,0 +1,60 @@
+{% extends 'OmniCart/admin_panel_layout.html' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="mt-4 mb-4">Edit Product</h2>
+
+    <form method="POST" id="addProductForm" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="id_product_name" class="form-label">Product Name:</label>
+        <input type="text" name="product_name" id="id_product_name" class="form-control" value="{{ product.product_name }}">
+      </div>
+      
+      <div class="mb-3">
+        <label for="id_quantity" class="form-label">Quantity:</label>
+        <input type="number" name="quantity" id="id_quantity" class="form-control" value="{{ product.quantity }}">
+      </div>
+      
+      <div class="mb-3">
+        <label for="id_product_image" class="form-label">Product Image:</label>
+        <input type="file" name="product_image" id="id_product_image" class="form-control-file">
+        <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" style="max-width: 100px;">
+      </div>
+      
+      <div class="mb-3">
+        <label for="id_unit_price" class="form-label">Unit Price:</label>
+        <input type="text" name="unit_price" id="id_unit_price" class="form-control" value="{{ product.unit_price }}">
+      </div>
+      
+      <div class="mb-3">
+        <label for="id_categories" class="form-label">Categories:</label>
+        {{ form.categories }}
+    </div>
+    
+    <div class="mb-3">
+        <label for="id_tags" class="form-label">Tags:</label>
+        {{ form.tags }}
+    </div>
+
+      <div class="mb-3">
+        <label for="id_unit_weight" class="form-label">Unit Weight:</label>
+        <input type="text" name="unit_weight" id="id_unit_weight" class="form-control" value="{{ product.unit_weight }}">
+    </div>
+    
+    <div class="mb-3">
+        <label for="id_product_description" class="form-label">Product Description:</label>
+        <textarea name="product_description" id="id_product_description" class="form-control" rows="4">{{ product.product_description }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="id_product_short_description" class="form-label">Product Short Description:</label>
+      <textarea name="product_short_description" id="id_product_short_description"  class="form-control" rows="2">{{ product.product_short_description }}</textarea>
+  </div>
+
+      <button type="submit" class="btn btn-primary">Update Product</button>
+    </form>
+  </div>
+{% endblock %}

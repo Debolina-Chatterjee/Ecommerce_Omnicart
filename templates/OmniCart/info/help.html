@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block head_title %}OmniCart-TERMS AND CONDITIONS{% endblock %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/help.css' %}"> {% endblock %}
+{% block content %}
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Help Page</h1>
+    <p>Welcome to our help page. Here you'll find answers to common questions and issues.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <ul>
+        <li><a href="#faq1">How do I create an account?</a></li>
+        <li><a href="#faq2">What payment methods do you accept?</a></li>
+        <li><a href="#faq3">How can I contact customer support?</a></li>
+    </ul>
+
+    <h2 id="faq1">How do I create an account?</h2>
+    <p>To create an account, click on the "Sign Up" button on the top right corner of the page and fill out the required information.</p>
+
+    <h2 id="faq2">What payment methods do you accept?</h2>
+    <p>We accept Visa, MasterCard, American Express, and PayPal.</p>
+
+    <h2 id="faq3">How can I contact customer support?</h2>
+    <p>You can contact our customer support team by emailing support@example.com or by calling 1-800-123-4567.</p>
+</body>
+
+{% endblock content %}

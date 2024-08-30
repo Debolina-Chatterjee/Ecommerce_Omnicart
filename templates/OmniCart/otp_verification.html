@@ -1,0 +1,27 @@
+<!-- OmniCart/otp_verification.html -->
+{% extends 'base.html' %}
+{% block head_title %}OTP Verification{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">OTP Verification</h2>
+
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'otp_verification' user.id %}">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="otp" class="form-label">Enter OTP:</label>
+            <input type="text" name="otp" class="form-control" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Verify OTP</button>
+    </form>
+</div>
+
+{% endblock content %}

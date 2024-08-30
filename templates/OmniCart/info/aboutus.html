@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block head_title %}OmniCart-ABOUT US{% endblock %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/gfg.css' %}"> {% endblock %}
+{% block content %}
+
+
+    <!-- ===================== -->
+    <!--    About Section      -->
+    <!-- ===================== -->
+  <!-- ===================== -->
+  <!--    P-Header Section   -->
+  <!-- ===================== -->
+
+  <section id="page-header" class="about-header" style="background-image: url({% static 'img/banner/b1.jpg' %});">
+    <h2>OMNI CART </h2>
+
+    <p> Your Guide to Seamless Shopping ; Explore Omnicart's E-commerce Policies </p>
+  </section>
+
+    <section id="about-head" class="section-p1">
+        <img src="{% static 'img/about/a6.jpg' %}" alt="">
+        <div>
+          <h2><strong>"Discover Omnicart: Crafting Seamless Shopping Experiences"!</strong></h2>
+          <br>
+          <p><b>At Omnicart, we're dedicated to redefining online shopping. Our curated selection of high-quality products, paired with a commitment to excellence, ensures a seamless and enjoyable experience for our customers. With integrity, transparency, and customer-centricity at our core, we strive to exceed expectations at every turn. More than just a marketplace, we're a community united by a passion for exceptional shopping. Trust us to deliver convenience, quality, and satisfaction straight to your doorstep. Join us on this journey as we revolutionize the way you shop online. Welcome to Omnicart.</b></p>
+          
+
+          <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Create stunnig images with as much or as little
+            control as you like thanks to a choice of basic and creative modes.</marquee>
+        </div>
+      </section>
+
+      <section id="feature" class="section-p1">
+        <div class="fe-box">
+          <img src="{% static 'img/features/f1.png' %}" alt="">
+          <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+          <img src="{% static 'img/features/f2.png' %}" alt="">
+          <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+          <img src="{% static 'img/features/f3.png' %}" alt="">
+          <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+          <img src="{% static 'img/features/f4.png' %}" alt="">
+          <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+          <img src="{% static 'img/features/f5.png' %}" alt="">
+          <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+          <img src="{% static 'img/features/f6.png' %}" alt="">
+          <h6>24/7 Support</h6>
+        </div>
+      </section>
+
+      <!-- Start Shop Newsletter  -->
+<section class="shop-newsletter section">
+    <div class="container">
+        <div class="inner-top">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-12">
+                    <!-- Start Newsletter Inner -->
+                    <div class="inner">
+                        <h4>Newsletter</h4>
+                        <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                            <input name="EMAIL" placeholder="Your email address" required="" type="email">
+                            <button class="btn">Subscribe</button>
+                        </form>
+                    </div>
+                    <!-- End Newsletter Inner -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Shop Newsletter -->
+        
+{% endblock content %}

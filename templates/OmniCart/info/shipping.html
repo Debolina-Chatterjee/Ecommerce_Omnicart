@@ -1,0 +1,455 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}OmniCart- Payment Policy{% endblock head_title %}
+
+
+
+{% block content %}
+
+<style>
+
+*{
+	box-sizing: border-box;
+	font-family: "Nunito Sans", sans-serif;
+}
+
+body{
+	font-size: 12px;
+	line-height: 1.5em;
+}
+
+.row{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+}
+.row .col{
+	width: 50%;
+}
+
+.row .col .content{
+	max-width: 600px;
+	margin:0 auto;
+}
+.section .title{
+	font-size: 64px;
+	line-height: 1.0625em;
+	font-weight: 700;
+	margin-top: 0;
+  
+}
+h2{
+	margin:40px 0 20px;
+}
+.section .content{
+	margin:0 auto;
+}
+.content{
+	padding: 5.5rem 0;
+	text-align: center;
+}
+
+#dragDrop{
+	background-color:rgb(254, 173, 52);
+}
+
+#dragDrop .row{
+	width: 92%;
+	height: 100%;
+	margin:0 auto;
+	align-items: center;
+}
+#dragDrop .row .col{
+	width: 50%;
+}
+#dragDrop .img.lazy-bg-loaded{
+	background-image: url(a.jpg);
+  background-size: cover;
+}
+
+#dragDrop .img{
+	background:center center/contain no-repeat;
+	width: 100%;
+	max-width: 770px;
+	height: 550px;
+	margin:50px 0 0 auto;
+}
+#dragDrop .content{
+	max-width: 500px;
+	width: 80%;
+	padding: 0;
+	text-align: left;
+}
+#dragDrop .content *{
+	color:#333;
+
+}
+#dragDrop .content a{
+	opacity: .9
+}
+#dragDrop .content a:after{
+	border-top:1px dotted rgba(255,255,255,.8);
+}
+#dragDrop .content p.lighter{
+	opacity: .8;
+	padding:10px
+}
+.section p{
+	font-size: 17px;
+	font-weight: 600;
+	margin-bottom: 1rem;
+	line-height: 1.2105em;
+	letter-spacing: 0;
+}
+.section h3.getStarted{
+	font-size: 17px;
+	font-weight: 600;
+	margin:0 0 1rem;
+	line-height: 1.2105em;
+	letter-spacing: 0;
+}
+.section h3.getStarted a{
+	text-decoration: none;
+	display: inline-block;
+	font-size: 17px;
+	line-height: 1.2105em;
+	letter-spacing: .012em;
+	font-weight: 700;
+}
+.section h3.getStarted a:after{
+	content: '';
+	display: block;
+	margin-top: .15rem;
+}
+
+#reviews *{
+	color: #000;
+  font-size:35px;
+
+}
+
+#reviews .title{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#reviews .row .col p{
+	text-transform: uppercase;
+	letter-spacing: .2em;
+}
+#reviews .row .col p.shopperApproved{
+	margin-bottom: 1.5rem;
+}
+
+p{
+	margin:1em 0;
+}
+
+#reviews.lazy-bg-loaded .row .col #ratings{
+	background-image: url(https://www.pngarts.com/files/5/Star-Rating-4.5-PNG.png);
+}
+#reviews .row .col #ratings{
+	background: center center/contain no-repeat;
+	max-width: 419px;
+	width: 100%;
+	height: 68px;
+	margin:0 auto 1.5rem;
+}
+#reviews .row .col+.col{
+	background: #ffffff;
+}
+
+#reviews .row .col{
+	width: 50%;
+}
+
+#reviews .row .col+.col .content{
+	max-width: 600px;
+}
+
+#reviews .row .col .content{
+	margin: 0 auto;
+  
+}
+#reviews .row .col p{
+	text-transform: uppercase;
+	margin-bottom: 3.5rem;
+	letter-spacing: .1em;
+  
+}
+
+#reviews .row .col #reviewLogos{
+	max-width: 550px;
+	width: 100%;
+	height: 68px;
+	margin:0 auto;
+}
+
+#reviews .row .col #reviewLogos ul{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	padding: 0;
+}
+
+ul{
+	list-style: none;
+	margin:0;
+}
+
+#reviews .row .col #reviewLogos ul li{
+	display: inline-block;
+	padding: 0 1rem;
+	overflow: hidden;
+	text-indent: -9999px;
+
+}
+
+#reviews .row .col #reviewLogos.lazy-bg-loaded li.i1 span{
+	background: url(https://www.zlti.com/wp-content/uploads/2018/04/globenewswire_logo.png) top center/contain no-repeat;
+}
+#reviews .row .col #reviewLogos.lazy-bg-loaded li.i2 span{
+	background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Business_Insider_Logo.svg/1200px-Business_Insider_Logo.svg.png) top center/contain no-repeat;
+}
+#reviews .row .col #reviewLogos.lazy-bg-loaded li.i3 span{
+	background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Yahoo_Finance_Logo_2013.svg/1200px-Yahoo_Finance_Logo_2013.svg.png) top center/contain no-repeat;
+}
+
+#reviews .row .col #reviewLogos ul li span{
+	display: block;
+	width: 100px;
+	height: 40px;
+}
+
+@media only screen and (max-width:768px){
+	#dragDrop .img.lazy-bg-loaded{
+		background-image: url(https://etelem.hu/wp-content/uploads/2019/03/veg%C3%A1n-chilis-bab.jpg);
+	}
+}
+@media only screen and (max-width:767px){
+	#dragDrop .img{
+		max-width: none;
+		width: 100%;
+		height: 300px;
+		margin:0;
+	}
+}
+
+@media only screen and (max-width:767px){
+	#dragDrop .row{
+		flex-wrap: wrap;
+	}
+}
+@media only screen and (max-width:767px){
+	#dragDrop{
+		height: auto;
+	}
+}
+
+@media only screen and (max-width:767px){
+	#dragDrop .row .col{
+		width: 100%;
+	}
+}
+@media only screen and (max-width:767px){
+	#dragDrop .row .col:first-child+.col{
+		order: 1;
+	}
+}
+@media only screen and (max-width:767px){
+	#dragDrop .row .col:first-child{
+		order:2;
+	}
+}
+@media only screen and (max-width:1440px){
+	#dragDrop .img{
+		max-width: 600px;
+		width: 100%;
+		height: 480px;
+		margin:60px auto 0;
+	}
+}
+
+@media only screen and (max-width:1023px){
+	#reviews .row .col{
+		width: 100%;
+	}
+}
+@media only screen and (max-width:600px){
+	#reviews .row .col .content{
+		width: 90%;
+	}
+}
+@media only screen and (max-width:768px){
+	#reviews .row .col .content{
+		width: 75%;
+	}
+}
+
+@media only screen and (max-width:1024px){
+	#reviews .row .col .content{
+		width: 60%;
+	}
+}
+
+@media only screen and (max-width:767px){
+	.section .title{
+		font-size: 40px;
+		line-height: 1.1em;
+		letter-spacing: 0;
+		width: 80%;
+	}
+}
+@media only screen and (max-width:1023px){
+	.section .title{
+		margin-bottom: 1.5rem;
+	}
+}
+
+@media only screen and (max-width:1440px){
+	.section .title{
+		font-size: 56px;
+		line-height: 1.0714em;
+		letter-spacing: .0005em;
+	
+	}
+}
+
+@media only screen and (max-width:768px){
+	h2{
+		font-size: 2em;
+	}
+}
+
+@media only screen and (max-width:1023px){
+	.section p{
+		font-size: 17px;
+		line-height: 1.23536em;
+		letter-spacing: .008em;
+		
+	}
+}
+
+@media only screen and (max-width:768px){
+	#reviews .row .col #ratings{
+		width: 40vw;
+	}
+}
+
+@media only screen and (max-width:600px){
+	#reviews .row .col+.col .content{
+		width: 89%;
+	}
+}
+
+@media only screen and (max-width:768px){
+	#reviews .row .col+.col .content{
+		width: 75%;
+	}
+}
+
+@media only screen and (max-width:1023px){
+	#reviews .row .col+.col .content{
+		width: 60%;
+		max-width: 600px;
+	}
+}
+@media only screen and (max-width:1024px){
+	#reviews .row .col+.col .content{
+		width: 89%;
+		max-width: 360px;
+	}
+}
+
+@media only screen and (max-width:1023px){
+	#reviews .row .col+.col .content .title{
+		width: 100%;
+	}
+}
+@media only screen and (max-width:1024px){
+	#reviews .row .col+.col .content .title{
+		width: 90%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+@media only screen and (max-width:1280px){
+	#reviews .row .col #reviewLogos ul li{
+		padding: 0;
+	}
+}
+</style>
+
+
+<div id="dragDrop" class="section">
+
+    <div class="row">
+        <div class="col">
+            <div class="">
+                <img src="{% static 'images/a.jpg' %}" alt="" height="200px">
+            </div>
+        </div>
+        <div class="col">
+            <div class="content">
+                <h3 class="title">Effortless Shipping: Fast and Secure!</h3>
+                <p class="lighter">
+                    Experience worry-free shipping with Omni Cart! Our dedicated team ensures your orders are
+                    swiftly and securely delivered to your doorstep. Shop confidently, knowing that we prioritize a
+                    seamless and efficient shipping process for your convenience. Enjoy the convenience of reliable
+                    delivery as you explore our diverse range of products. Our commitment to customer satisfaction
+                    doesn't end with the purchase; our responsive customer support team is available to address any
+                    inquiries or concerns you may have regarding your shipment. Thank you for choosing Omni Cart– where
+                    your shopping journey is our top priority. Happy shopping!
+
+
+
+
+
+                </p>
+                <h3 class="getStarted">
+
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="reviews" class="section lazy-bg-loaded">
+    <div class="row">
+        <div class="col">
+            <div class="content">
+                <h3 class="title">Rated 4.6 Out of 5 by 83000+ Customers</h3>
+                <p class="shopperApproved">Shopper Approved</p>
+                <div id="ratings"></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="content">
+                <h3 class="title">The site builder everyone's talking about.</h3>
+                <p>As seen in</p>
+                <div id="reviewLogos" class="lazy-bg-loaded">
+                    <ul>
+                        <li class="i1">
+                            <span>Nasdaq GlobeNewswire</span>
+                        </li>
+                        <li class="i2">
+                            <span>Business Insider</span>
+                        </li>
+                        <li class="i3">
+                            <span>Yahoo! Finance</span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,155 @@
+{% extends 'OmniCart/admin_panel_layout.html' %}
+{% block title %}Manufacturer Admin Panel{% endblock %}
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Manufacturer Admin Panel</h2>
+    <p>Welcome, {{ customer.username }}!</p>
+
+    <!-- Display Total Products -->
+    <div class="row mt-4">
+       
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Orders Status</h5>
+                    <canvas id="pendingOrdersChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Sales Month-wise</h5>
+                    <canvas id="totalSalesChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Sales Chart Section -->
+
+
+    <!-- Total Sales Month-wise Chart Section -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Orders and Products</h5>
+                    <canvas id="totalChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- JavaScript to Initialize Charts -->
+<script>
+    // Product Sales Chart Data (Sample Data)
+   
+
+    // Total Sales Month-wise Chart Data (Passed from Backend)
+    var monthLabels = {{ month_labels|safe }};
+    var totalSalesData = {{ total_sales_data|safe }};
+
+    // Initialize Total Sales Month-wise Chart
+    var totalSalesCtx = document.getElementById('totalSalesChart').getContext('2d');
+    var totalSalesChart = new Chart(totalSalesCtx, {
+        type: 'line',
+        data: {
+            labels: monthLabels,
+            datasets: [{
+                label: 'Total Sales',
+                data: totalSalesData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    var totalData = {
+        labels: ["Total Orders", "Total Products"],
+        datasets: [{
+            data: [{{ total_orders }}, {{ total_products }}],
+            backgroundColor: ["#007bff", "#28a745"], // Blue for orders, Green for products
+            hoverBackgroundColor: ["#0056b3", "#218838"], // Darker shades
+        }]
+    };
+
+    // Initialize Total Chart
+    var totalCtx = document.getElementById('totalChart').getContext('2d');
+    var totalChart = new Chart(totalCtx, {
+        type: 'pie',
+        data: totalData,
+        options: {
+            responsive: true,
+            legend: {
+                display: true,
+                position: 'bottom',
+            },
+            title: {
+                display: false,
+                text: 'Total Orders and Products',
+            },
+        }
+    });
+
+
+
+
+</script>
+
+<script>
+    var orderData = {
+        labels: ['Pending', 'Processing', 'Shipped', 'Delivered'],
+        datasets: [{
+            label: 'Orders',
+            data: [{{ pending_count }}, {{ processing_count }}, {{ shipped_count }}, {{ delivered_count }}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)', // Red
+                'rgba(54, 162, 235, 0.5)', // Blue
+                'rgba(255, 206, 86, 0.5)', // Yellow
+                'rgba(75, 192, 192, 0.5)', // Green
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    // Initialize Pending Orders Chart
+    var pendingOrdersCtx = document.getElementById('pendingOrdersChart').getContext('2d');
+    var pendingOrdersChart = new Chart(pendingOrdersCtx, {
+        type: 'bar',
+        data: orderData,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+{% endblock %}
+

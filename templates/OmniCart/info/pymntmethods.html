@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}OmniCart- Payment Policy{% endblock head_title %}
+
+
+{% block content %}
+
+<style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  
+  .intro-container {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #ffa333;
+    color: #303030;
+  }
+  
+  .intro-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .intro-container p {
+    font-size: 1.2em;
+    line-height: 1.6;
+  }
+  
+  .payment-details-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .payment-details-card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    color: #333;
+  }
+  
+  .payment-details-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .payment-details-card img {
+    max-width: 100px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .payment-details-card:hover img {
+    transform: rotate(360deg);
+  }
+  
+  .payment-details-card h2 {
+    font-size: 1.5em;
+    color: #2c2c2c;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .payment-details-card:hover h2 {
+    color: #393939;
+  }
+  
+  .payment-details-card p {
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .payment-details-card ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .payment-details-card li {
+    margin-bottom: 5px;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .payment-details-card:hover li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+</style>
+
+<div class="intro-container">
+    <h1>Welcome to Our Secure Payment Options</h1>
+</div>
+
+<div class="payment-details-container">
+    <div class="payment-details-card">
+        <img src="{% static 'images/creditcard.png' %}" alt="Credit Card" height="200px">
+        <h2>Credit Card</h2>
+        <p>Securely pay with your credit card. We accept major credit cards, including Visa, MasterCard, and American Express.</p>
+        <ul>
+            <li>No additional fees</li>
+            <li>Secure transactions</li>
+            <li>Quick processing</li>
+        </ul>
+    </div>
+
+    <div class="payment-details-card">
+        <img src="{% static 'images/cash.jpg' %}" alt="Cash on Delivery" height="200px">
+        <h2>Cash on Delivery</h2>
+        <p>Pay with cash when your order is delivered to your doorstep. Enjoy the flexibility of paying upon receiving your items.</p>
+        <ul>
+            <li>Pay upon delivery</li>
+            <li>Convenient option</li>
+            <li>Available for eligible orders</li>
+        </ul>
+    </div>
+
+    <div class="payment-details-card">
+      <img src="{% static 'images/paypal.png' %}" alt="PayPal" height="200px">
+      <h2>PayPal</h2>
+      <p>Quick and easy payments with PayPal. Link your bank account or use your credit/debit card for seamless transactions.</p>
+      <ul>
+          <li>Fast checkout</li>
+          <li>Buyer protection</li>
+          <li>Trusted worldwide</li>
+      </ul>
+  </div>
+</div>
+
+
+{% endblock content %}

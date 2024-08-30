@@ -1,0 +1,82 @@
+{% load static %}
+<nav class="sidebar">
+    <div class="menu_content">
+      <ul class="menu_items">
+        <div class="menu_title menu_dahsboard"></div>
+        <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
+        <!-- start -->
+        <li class="item">
+          <a href="{% url 'admin_panel' customer_id=request.session.customer.id %}" style="text-decoration: none;">
+            <span class="navlink_icon">
+              <i class='bx bxs-dashboard'></i>
+            </span>
+           <span class="navlink">Dashboard</span></a>
+          <!-- </a> -->
+        </li>
+       
+        <!-- end -->
+      </ul>
+      <ul class="menu_items">
+        <div class="menu_title menu_editor"></div>
+        <!-- duplicate these li tag if you want to add or remove navlink only -->
+        <!-- Start -->
+        <li class="item">
+          <a href="{% url 'add_product' %}" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bxs-magic-wand"></i>
+            </span>
+            <span class="navlink">Add Product</span>
+          </a>
+        </li>
+        <!-- End -->
+        <li class="item">
+          <a href="{% url 'product_list' %}" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-loader-circle"></i>
+            </span>
+            <span class="navlink">View product</span>
+          </a>
+        </li>
+      
+      </ul>
+      <ul class="menu_items">
+        <div class="menu_title menu_setting"></div>
+
+        <li class="item">
+          <a href="{% url 'order_list' %}" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-medal"></i>
+            </span>
+            <span class="navlink">View Order</span>
+          </a>
+        </li>
+        <!-- <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+            <span class="navlink">Setting</span>
+          </a>
+        </li> -->
+        <li class="item"> 
+          <a href="{% url 'admin_account' %}" class="nav_link">
+            <span class="navlink_icon">
+              <i class='bx bxs-user-account'></i>
+            </span>
+            <span class="navlink">Profile</span>
+          </a>
+        </li>
+      </ul>
+      <!-- Sidebar Open / Close -->
+      <div class="bottom_content">
+        <div class="bottom expand_sidebar">
+          <span> Expand</span>
+          <i class='bx bx-log-in' ></i>
+        </div>
+        <div class="bottom collapse_sidebar">
+          <span> Collapse</span>
+          <i class='bx bx-log-out'></i>
+        </div>
+      </div>
+    </div>
+  </nav>

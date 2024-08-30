@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block head_title %}Order Success{% endblock %}
+{% block content %}
+
+<!-- Start Order Success -->
+<section class="order-success section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="order-success-content text-center">
+                    <h2>Thank You!</h2>
+                    <p>Your order has been successfully placed. We appreciate your business.</p>
+
+                    <!-- Billing Information -->
+                    <div class="billing-info">
+                        <h3>Billing Information</h3>
+                        <p><strong>Name:</strong> {{ customer.full_name }}</p>
+                        <p><strong>Email:</strong> {{ customer.email }}</p>
+                        <p><strong>Address:</strong> {{ customer.address }}</p>
+                        <!-- Add other billing information fields as needed -->
+                    </div>
+
+                    <!-- Order Details -->
+                    <div class="order-details">
+                        <h3>Order Details</h3>
+                        <p><strong>Bill Number:</strong> {{ order.id }}</p>
+                        <p><strong>Total Price:</strong> ₹{{ order.total_price }}</p>
+                        <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+                        <!-- Add other order details as needed -->
+                    </div>
+
+                    <!-- Additional Information or Call to Action -->
+                    <div class="additional-info">
+                        <p>For any inquiries, please contact our customer support.</p>
+                        <!-- You can add additional information or a call to action here -->
+                    </div>
+
+                    <div class="button5 mt-4">
+                        <a href="{% url 'shops' %}" class="btn btn-primary" style="color: #ffffff;">
+                            Continue shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Order Success -->
+
+{% endblock content %}
+
+{% block style %}
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+  }
+
+  .order-success {
+    padding: 50px 0;
+  }
+
+  .order-success-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  h2 {
+    color: #28a745;
+  }
+
+  .billing-info,
+  .order-details,
+  .additional-info {
+    margin-top: 20px;
+  }
+
+  strong {
+    color: #007bff;
+  }
+
+  .button5 {
+    margin-top: 30px;
+  }
+
+  /* Style the "Continue shopping" button */
+
+</style>
+{% endblock style %}

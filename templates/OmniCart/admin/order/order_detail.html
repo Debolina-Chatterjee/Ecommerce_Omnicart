@@ -1,0 +1,62 @@
+{% extends 'OmniCart/admin_panel_layout.html' %}
+
+{% block title %}Order List{% endblock %}
+
+{% block content %}
+<div class="container mt-5.3">
+    <h2 class="text-center mb-4">Order Detail</h2>
+    <div class="card mb-4">
+        <div class="card-header">
+            Order Information
+        </div>
+        <div class="card-body">
+            <p><strong>Order ID:</strong> {{ order.id }}</p>
+            <p><strong>Total Price:</strong> ₹{{ order.total_price }}</p>
+            <p><strong>Status:</strong> {{ order.status }}</p>
+            <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            Customer Information
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ customer.full_name }}</p>
+            <p><strong>Email:</strong> {{ customer.email }}</p>
+            <p><strong>Address:</strong> {{ customer.address}}</p>
+            <p><strong>Phone Number:</strong> {{ customer.phone_number }}</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Order Items
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for item in order.items.all %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_name }}" style="max-width: 100px;">
+                        </div>
+                        <div class="col-md-4">
+                            <strong>{{ item.product.product_name }}</strong>
+                        </div>
+                        <div class="col-md-2">
+                            <em>Quantity:</em> {{ item.quantity }}
+                        </div>
+                        <div class="col-md-2">
+                            <em>Unit Price:</em> ₹{{ item.unit_price }}
+                        </div>
+                        <div class="col-md-2">
+                            <em>Total Price:</em> ₹{% widthratio item.product.unit_price 1 item.quantity %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

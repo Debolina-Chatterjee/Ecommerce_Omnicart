@@ -1,0 +1,25 @@
+{% load static %}
+<nav class="navbar">
+    <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+      
+     
+            <img src="{% static 'homepage-images/OMNI.png' %}" width="100%" alt="Default Logo" style="width: 30%;">
+      
+        Welcome, {{ request.user.username }}
+    </div>
+    <div class="search_bar">
+        <input type="text" placeholder="Search" />
+    </div>
+    <div class="navbar_content">
+        <i class="bi bi-grid"></i>
+        <i class='bx bx-sun' id="darkLight"></i>
+        <i class='bx bx-bell'></i>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+        </form>
+    </div>
+</nav>

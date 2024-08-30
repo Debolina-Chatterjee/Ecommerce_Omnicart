@@ -1,0 +1,79 @@
+<!-- Your shop.html template -->
+
+{% extends 'base.html' %} <!-- Assuming you have a base template -->
+
+{% block content %}
+<section class="container py-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-3">
+            <!-- Add your sidebar content here -->
+            <!-- ... -->
+            
+        </div>
+
+        <!-- Content -->
+        <div class="col-lg-9">
+            <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+                <strong class="d-block py-2">{{ products.paginator.count }} Items found </strong>
+                
+              </header>
+            
+
+            <!-- Product Listings -->
+            <div class="row justify-content-center mb-3">
+                {% for product in products %}
+                <div class="col-md-12">
+                    <div class="card  shadow-0 border rounded-3" style="border-color: #F7941D;!important">
+                        <div class="card-body">
+                            <div class="row g-0">
+                                <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                                    <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                                        <img src="{{ product.product_image.url }}" class="w-100" alt="{{ product.product_name }}" />
+                                        <a href="#!">
+                                            <div class="hover-overlay">
+                                                <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-md-5 col-sm-7">
+                                    <h5>{{ product.product_name }}</h5>
+                                    <!-- Add other product details here -->
+
+                                    <p class="text mb-4 mb-md-0">{{ product.product_short_description }}</p>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-5">
+                                    <div class="d-flex flex-row align-items-center mb-1">
+                                        <h4 class="mb-1 me-1">${{ product.unit_price }}</h4>
+                                    </div>
+                                    <!-- Add other product details here -->
+
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary shadow-0" type="button">Buy this</button>
+                                        <a href="#!" class="btn btn-light border px-2 pt-2 pb-2 icon-hover"><i style="color: aliceblue;" class=" ti-heart "></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Product Listings -->
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
+                <ul class="pagination">
+                    {% for page_num in product_pages %}
+                    <li class="page-item{% if page_num == current_page %} active{% endif %}">
+                        <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <!-- Pagination -->
+        </div>
+    </div>
+</section>
+{% endblock %}
